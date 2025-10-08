@@ -1,0 +1,52 @@
+# Temp
+tmp/
+*.tmp
+
+# IDE
+.idea/
+.qodo/
+
+# Dependencies
+node_modules/
+package-lock.json
+/vendor/
+composer.lock
+
+# Example themes
+/wp-content/themes/twenty*/
+
+# Example plugin
+/wp-content/plugins/hello.php
+
+# Uploads
+/wp-content/uploads/
+/wp-content/avatars/
+/wp-admin/
+/wp-includes/
+/wp-content/languages/
+/wp-content/i18n-config/
+/wp-content/upgrade/
+
+/index.php
+/license.txt
+/readme.html
+/wp-activate.php
+/wp-blog-header.php
+/wp-comments-post.php
+/wp-config.php
+/wp-config-sample.php
+/wp-cron.php
+/wp-links-opml.php
+/wp-load.php
+/wp-login.php
+/wp-mail.php
+/wp-settings.php
+/wp-signup.php
+/wp-trackback.php
+/xmlrpc.php
+
+# Log files
+*.log
+
+# htaccess
+/.htaccess
