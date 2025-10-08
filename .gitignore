@@ -1,0 +1,8 @@
+# IDE
+.idea/
+.qodo/
+
+/docker/
+/database/
+
+docker-compose.yml
