@@ -1,0 +1,65 @@
+:root {    
+    --white: #fff;
+    --black: #000;
+    --primary-color: #1c1c;    
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto';
+    font-weight: 400;
+}
+
+h1,
+.h1 {
+    font-size: 28px;
+    line-height: 31px;
+}
+
+h2,
+.h2 {
+    font-size: 24px;
+    line-height: 26px;
+}
+
+h3,
+.h3,
+blockquote p {
+    font-size: 22px;
+    line-height: 26px;
+}
+
+h4,
+.h4 {
+    font-size: 18px;
+    line-height: 22px;
+}
+
+h5,
+.h5 {
+    font-size: 16px;
+    line-height: 22px;
+    font-weight: 400;
+}
+
+a {
+    text-decoration: none;
+
+    :visited {
+        color: initial;
+    }
+}
+
+img {
+    height: auto;
+    display: inline-block;
+}
+
+.hidden {
+    display: none;
+}

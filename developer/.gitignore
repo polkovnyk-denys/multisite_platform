@@ -44,6 +44,7 @@ composer.lock
 /wp-signup.php
 /wp-trackback.php
 /xmlrpc.php
+/wp-config-docker.php
 
 # Log files
 *.log
