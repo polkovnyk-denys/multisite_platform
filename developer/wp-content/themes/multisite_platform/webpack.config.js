@@ -9,13 +9,17 @@ const env = process.env.NODE_ENV || "development";
 
 const entriesFiles = (folder = "js", ext = "js", substring = 3) => {
   let regex = new RegExp(`.*\.${ext}$`);
+  const folderPath = path.resolve(__dirname, `src/${folder}/`);
+  if (!fs.existsSync(folderPath)) {
+    return {};
+  }
   return fs
-    .readdirSync(path.resolve(__dirname, `src/${folder}/`))
+    .readdirSync(folderPath)
     .filter((file) => file.match(regex))
     .map((file) => {
       return {
         name: file.substring(0, file.length - substring),
-        path: path.resolve(__dirname, `src/${ext}/${file}`),
+        path: path.resolve(__dirname, `src/${folder}/${file}`),
       };
     })
     .reduce((files, file) => {
@@ -26,7 +30,11 @@ const entriesFiles = (folder = "js", ext = "js", substring = 3) => {
 
 let config = {
   mode: env,
-  entry: { ...entriesFiles(), ...entriesFiles("scss", "scss", 5) },
+  entry: {
+    ...entriesFiles(),
+    ...entriesFiles("scss", "scss", 5),
+    ...entriesFiles("css", "css", 4),
+  },
   output: {
     path: path.resolve(__dirname, `dist`),
     filename: "js/[name].js",
@@ -40,6 +48,29 @@ let config = {
   },
   module: {
     rules: [
+      {
+        test: /\.css$/,
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+          },
+          {
+            loader: "css-loader",
+            options: {
+              url: false,
+            },
+          },
+          {
+            loader: "postcss-loader",
+            options: {
+              postcssOptions: {
+                config: path.resolve(__dirname, "postcss.tailwind.config.js"),
+              },
+            },
+          },
+        ],
+      },
       {
         test: /\.s[ac]ss$/,
         exclude: /node_modules/,
@@ -57,12 +88,7 @@ let config = {
             loader: "postcss-loader",
             options: {
               postcssOptions: {
-                ident: "postcss",
-                plugins: [
-                  require("cssnano")({
-                    preset: "default",
-                  }),
-                ],
+                config: path.resolve(__dirname, "postcss.config.js"),
               },
             },
           },

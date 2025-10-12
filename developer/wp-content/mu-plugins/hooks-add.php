@@ -8,6 +8,7 @@ Author: Polkovnyk Denys
 Author URI: https://github.com/polkovnyk-denys
 */
 
+add_theme_support('post-thumbnails'); // Add support for post thumbnails.
 
 /* ***************** Comments **************** */
 // Close comments on the back-end.
