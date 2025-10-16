@@ -29,3 +29,13 @@ require_once(__DIR__ . '/theme-hooks-remove.php');
  * Register custom post types
  */
 require_once(__DIR__ . '/theme-post-types.php');
+
+/**
+ * Theme queries
+ */
+require_once(__DIR__ . '/theme-queries.php');
+
+/**
+ * Theme helper queries
+ */
+require_once(__DIR__ . '/theme-helper-queries.php');

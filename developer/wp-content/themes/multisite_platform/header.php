@@ -23,11 +23,11 @@
 <body <?php body_class(); ?>>
     <?php wp_body_open(); ?>
     <!-- Open .main-wrapper -->
-    <header class="header">
-        <?php
-        get_template_part(
-            sections_path('header-section')
-        );
-        ?>
-    </header>
-    <main class="wrapper">
+
+    <?php
+    get_template_part(
+        sections_path('header-section')
+    );
+    ?>
+
+    <main class="wrapper flex justify-center">
