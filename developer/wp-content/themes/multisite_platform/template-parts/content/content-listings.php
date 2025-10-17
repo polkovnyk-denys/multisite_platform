@@ -12,9 +12,20 @@ $price     = get_field('price', $post_id);
 $rooms     = get_field('rooms', $post_id);
 $area      = get_field('area_m2', $post_id);
 $content   = apply_filters('the_content', get_post_field('post_content', $post_id));
+$items     = get_breadcrumb_items();
 ?>
 
 <section class="container mx-auto px-4 py-8 max-w-6xl w-full">
+
+    <?php
+    get_template_part(
+        get_partials_path('breadcrumbs'),
+        '',
+        [
+            'items' => $items,
+        ]
+    );
+    ?>
 
     <div class="mb-4">
         <h1 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-3">
