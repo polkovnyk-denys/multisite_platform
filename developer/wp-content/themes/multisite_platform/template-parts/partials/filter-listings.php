@@ -14,6 +14,7 @@ $query_params = get_query_params();
             <label for="city" class="block text-sm font-medium mb-2">
                 <?php echo esc_html__('City', 'platform'); ?>
             </label>
+
             <select
                 name="city"
                 id="city"

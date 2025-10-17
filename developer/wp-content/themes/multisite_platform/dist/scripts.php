@@ -3,12 +3,16 @@ add_action('wp_head', function (): void {
 	/*
 	* Add styles for another templates here
 	*/
-	$default_styles = [
+	$styles = [
 		'/dist/css/tailwind.css',
 		'/dist/css/style.css',
 	];
 
-	foreach ($default_styles as $style) {
+	if (is_singular('listings')) {
+		$styles[] = '/dist/css/single-listings.css';
+	}
+
+	foreach ($styles as $style) {
 		$file_path = get_template_directory() . $style;
 
 		if (file_exists($file_path)) {
@@ -37,10 +41,10 @@ add_action('wp_enqueue_scripts', function (): void {
 		]);
 	}
 
-	if (is_singular('post')) {
+	if (is_singular('listings')) {
 		wp_enqueue_script(
-			'post',
-			DIST_PATH . '/js/post.js',
+			'listings',
+			DIST_PATH . '/js/listings.js',
 			[],
 			'1.0.0',
 			true

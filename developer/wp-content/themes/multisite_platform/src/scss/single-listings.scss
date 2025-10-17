@@ -1,0 +1,13 @@
+.container-listings {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.info-listings{
+    display: flex;
+    flex-direction: column;    
+    gap: 1rem;
+    border: 1px solid #e5e7eb;
+    padding: 1rem;
+    border-radius: 0.5rem;
+}

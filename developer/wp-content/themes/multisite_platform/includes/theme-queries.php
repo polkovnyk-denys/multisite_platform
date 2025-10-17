@@ -55,3 +55,28 @@ function get_list_cities(): array
     $cities = $wpdb->get_col($query);
     return array_map('sanitize_text_field', $cities);
 }
+
+
+/**
+ * Get list of listings by city
+ * @return array
+ */
+function get_similar_listings_by_city(int $post_id, string $city): WP_Query
+{
+    $args = [
+        'post_type'           => 'listings',
+        'fields'              => 'ids',
+        'posts_per_page'      => 3,
+        'post__not_in'        => [$post_id],
+        'ignore_sticky_posts' => true,
+        'no_found_rows'       => true,
+        'meta_query'          => [
+            [
+                'key' => 'city',
+                'value' => $city,
+            ]
+        ]
+    ];
+
+    return new WP_Query($args);
+}
