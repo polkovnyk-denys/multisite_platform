@@ -3,7 +3,6 @@ add_action('wp_head', function (): void {
 	/*
 	* Add styles for another templates here
 	*/
-
 	$default_styles = [
 		'/dist/css/tailwind.css',
 		'/dist/css/style.css',
@@ -22,6 +21,21 @@ add_action('wp_head', function (): void {
 });
 
 add_action('wp_enqueue_scripts', function (): void {
+	if (is_home()) {
+		wp_enqueue_script(
+			'home',
+			DIST_PATH . '/js/home.js',
+			[],
+			'1.0.0',
+			true
+		);
+
+		// Localize script for AJAX
+		wp_localize_script('home', 'ajaxData', [
+			'ajaxUrl' => admin_url('admin-ajax.php'),
+			'nonce'   => wp_create_nonce('filter_listings_nonce'),
+		]);
+	}
 
 	if (is_singular('post')) {
 		wp_enqueue_script(

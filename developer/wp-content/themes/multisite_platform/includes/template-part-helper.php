@@ -53,11 +53,19 @@ function get_query_params(): array
         'sort'      => 'sanitize_text_field',
     ];
 
-    $query_params = [];
+    // $query_params = [];
+
+    if (defined('DOING_AJAX') && DOING_AJAX) {
+        $query_method = $_POST;
+    } else {
+        $query_method = $_GET;
+    }
 
     foreach ($allowed_params as $param => $sanitize_function) {
-        if (!empty($_GET[$param])) {
-            $query_params[$param] = $sanitize_function($_GET[$param]);
+        if (!empty($query_method[$param])) {
+            $query_params[$param] = $sanitize_function($query_method[$param]);
+        } else {
+            $query_params[$param] = $sanitize_function(''); // Default value for empty params
         }
     }
 

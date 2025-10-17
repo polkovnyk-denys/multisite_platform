@@ -3,7 +3,7 @@
 /**
  * Meta query for filtering by city
  */
-function meta_query_filter_city(string $filter_city): array
+function meta_query_filter_city(string $filter_city = ''): array
 {
     if (!empty($filter_city)) {
         $meta_query = ['relation' => 'AND'];

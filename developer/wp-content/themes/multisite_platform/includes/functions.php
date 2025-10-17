@@ -39,3 +39,8 @@ require_once(__DIR__ . '/theme-queries.php');
  * Theme helper queries
  */
 require_once(__DIR__ . '/theme-helper-queries.php');
+
+/**
+ * Theme AJAX
+ */
+require_once(__DIR__ . '/theme-ajax.php');

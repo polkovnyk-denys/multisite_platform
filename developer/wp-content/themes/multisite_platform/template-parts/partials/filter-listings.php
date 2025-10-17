@@ -66,9 +66,6 @@ $query_params = get_query_params();
                 <?php echo esc_html__('Filter', 'platform'); ?>
             </button>
         </div>
-
-        <?php if (isset($query_params['sort'])) : ?>
-            <input type="hidden" name="sort" value="<?php echo esc_attr($query_params['sort']); ?>">
-        <?php endif; ?>
+        <input type="hidden" name="sort" value="<?php echo esc_attr($query_params['sort'] ?? 'date_desc'); ?>">
     </form>
 </div>

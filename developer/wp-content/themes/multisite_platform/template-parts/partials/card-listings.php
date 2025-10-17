@@ -10,10 +10,10 @@ $link  = get_permalink($post_id);
 $title = get_the_title($post_id);
 $thumbnail = get_the_post_thumbnail_url($post_id, 'full') ?? '';
 
-$city = get_field('city', $post_id);
+$city  = get_field('city', $post_id);
 $price = get_field('price', $post_id);
 $rooms = get_field('rooms', $post_id);
-$area = get_field('area_m2', $post_id);
+$area  = get_field('area_m2', $post_id);
 
 ?>
 <article class="listing-card bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
