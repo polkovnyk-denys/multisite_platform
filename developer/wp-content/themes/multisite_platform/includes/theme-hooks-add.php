@@ -4,8 +4,10 @@
  * Add schema to the head
  */
 
-function add_schema_article(): void
+function add_schemas_to_head(): void
 {
+    $post_id = get_the_ID();
+
     if (is_singular('listings')) {
         $items = get_breadcrumb_items();
 
@@ -16,9 +18,17 @@ function add_schema_article(): void
                 'items' => $items,
             ]
         );
+
+        get_template_part(
+            schema_path("offer"),
+            '',
+            [
+                'post_id' => $post_id,
+            ]
+        );
     }
 }
-add_action('wp_head', 'add_schema_article');
+add_action('wp_head', 'add_schemas_to_head');
 
 /**
  * Output the canonical link
