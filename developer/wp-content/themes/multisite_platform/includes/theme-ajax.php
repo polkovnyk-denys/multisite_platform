@@ -39,7 +39,7 @@ function ajax_filter_listings(): void
             );
         }
     } else {
-        get_template_part('template-parts/content', 'none-listings');
+        get_template_part(content_path('content-none-listings'));
     }
 
     $html = ob_get_clean();

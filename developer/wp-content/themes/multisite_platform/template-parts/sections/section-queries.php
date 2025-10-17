@@ -25,7 +25,7 @@ $listings_posts = $listings_query->posts ?? [];
     <div class="listings-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         <?php
         if (empty($listings_posts)) {
-            get_template_part('template-parts/content', 'none-listings');
+            get_template_part(content_path('content-none-listings'));
         } else {
             foreach ($listings_posts as $post_id) :
                 get_template_part(

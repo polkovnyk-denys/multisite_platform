@@ -3,7 +3,7 @@
 /**
  * Get the path to the partials directory
  */
-function partials_path($part): string
+function partials_path(string $part): string
 {
     return "template-parts/partials/{$part}";
 }
@@ -11,7 +11,7 @@ function partials_path($part): string
 /**
  * Get the path to the sections directory
  */
-function sections_path($part): string
+function sections_path(string $part): string
 {
     return "template-parts/sections/{$part}";
 }
@@ -27,7 +27,7 @@ function get_partials_path($part): string
 /**
  * Get the path to the micro-partials directory
  */
-function micro_partials_path($part): string
+function micro_partials_path(string $part): string
 {
     return "template-parts/micro-partials/{$part}";
 }
@@ -35,9 +35,17 @@ function micro_partials_path($part): string
 /**
  * Get the path to the schema directory
  */
-function schema_path($part): string
+function schema_path(string $part): string
 {
     return "template-parts/schema/{$part}";
+}
+
+/**
+ * Get the path to the content directory
+ */
+function content_path(string $part): string
+{
+    return "template-parts/content/{$part}";
 }
 
 /**
@@ -52,8 +60,6 @@ function get_query_params(): array
         'price_max' => 'absint',
         'sort'      => 'sanitize_text_field',
     ];
-
-    // $query_params = [];
 
     if (defined('DOING_AJAX') && DOING_AJAX) {
         $query_method = $_POST;
