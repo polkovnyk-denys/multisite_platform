@@ -9,9 +9,9 @@ function meta_query_filter_city(string $filter_city = ''): array
         $meta_query = ['relation' => 'AND'];
 
         $meta_query[] = [
-            'key' => 'city',
-            'value' => $filter_city,
-            'compare' => '='
+            'key'     => 'city',
+            'value'   => $filter_city,
+            'compare' => '=',
         ];
 
         return $meta_query;
