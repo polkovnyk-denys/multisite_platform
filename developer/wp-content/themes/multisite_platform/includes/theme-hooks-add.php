@@ -19,3 +19,19 @@ function add_schema_article(): void
     }
 }
 add_action('wp_head', 'add_schema_article');
+
+/**
+ * Output the canonical link
+ * @return void
+ */
+function output_canonical_link(): void
+{
+    $canonical = get_canonical_url();
+
+    if (empty($canonical)) {
+        return;
+    }
+
+    printf('<link rel="canonical" href="%s">', esc_url($canonical));
+}
+add_action('wp_head', 'output_canonical_link', 5);

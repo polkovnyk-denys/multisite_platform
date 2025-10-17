@@ -85,3 +85,59 @@ function get_breadcrumb_items(): array
 
     return $items;
 }
+
+/**
+ * Create the canonical URL based on the current page
+ */
+function get_canonical_url(): string
+{
+    if (is_search()) {
+        return '';
+    }
+
+    if (is_singular()) {
+        return get_permalink();
+    }
+
+    $paged = get_current_page_number();
+    $base  = get_pagenum_link($paged > 0 ? $paged : 1);
+    $base  = strtok($base, '?');
+
+    $allowed_keys = get_query_params();
+
+    $noise = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content', 'gclid', 'fbclid', '_ga', '_gl', 'ref'];
+    $base  = remove_query_arg($noise, $base);
+    $canonical = !empty($allowed_keys) ? add_query_arg($allowed_keys, $base) : $base;
+
+    return $canonical;
+}
+
+/**
+ * Get the query params from the GET request
+ */
+function get_query_params(): array
+{
+    // Allowed params
+    $allowed_params = [
+        'city'      => 'sanitize_text_field',
+        'price_min' => 'absint',
+        'price_max' => 'absint',
+        'sort'      => 'sanitize_text_field',
+    ];
+
+    if (defined('DOING_AJAX') && DOING_AJAX) {
+        $query_method = $_POST;
+    } else {
+        $query_method = $_GET;
+    }
+
+    foreach ($allowed_params as $param => $sanitize_function) {
+        if (!empty($query_method[$param])) {
+            $query_params[$param] = $sanitize_function($query_method[$param]);
+        } else {
+            $query_params[$param] = $sanitize_function(''); // Default value for empty params
+        }
+    }
+
+    return $query_params;
+}
